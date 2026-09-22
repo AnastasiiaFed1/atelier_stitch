@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Ательє "Stitch" - Зворотній зв’язок</title>
+</head>
+<body>
+    <header style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="logo.jpg" alt="Логотип Ательє Stitch" width="70" height="70">
+            <h1 style="margin: 0;">Ательє "Stitch"</h1>.
+        </div>
+
+        <div>
+            <a href="index.html">
+                <button type="button">Головна</button>
+            </a>
+        </div>
+    </header>
+
+    <hr>
+
+    <main>
+        <h2>Форма зворотнього зв’язку</h2>
+
+        <form action="#" method="post" style="max-width: 600px;">
+            
+            <fieldset style="border: 1px solid #ccc; padding: 15px; border-radius: 5px;">
+                <legend style="color: #006adc; font-weight: bold; padding: 0 5px;">Персональна інформація</legend>
+                
+                <p>
+                    <label for="fullname"><b>Прізвище та ім’я:</b></label><br>
+                    <input type="text" id="fullname" name="fullname" placeholder="Іванов Іван" required style="width: 100%; padding: 6px; box-sizing: border-box;">
+                </p>
+
+                <p>
+                    <label for="email"><b>E-mail:</b></label><br>
+                    <input type="email" id="email" name="email" placeholder="example@mail.com" required style="width: 100%; padding: 6px; box-sizing: border-box;">
+                </p>
+
+                <p>
+                    <label for="age"><b>Вік:</b></label><br>
+                    <input type="number" id="age" name="age" min="14" max="100" style="width: 100%; padding: 6px; box-sizing: border-box;">
+                </p>
+
+            </fieldset>
+
+            <br>
+
+            <p>
+                <label for="purpose"><b>Мета звернення:</b></label><br>
+                <select id="purpose" name="purpose" required style="width: 100%; padding: 6px;">
+                    <option value="cooperation">Співпраця</option>
+                    <option value="complaint">Скарга на неякісний пошив</option>
+                    <option value="proposal">Пропозиція</option>
+                    <option value="bug">Наявність помилки</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="details"><b>Детально (макс. 500 символів):</b></label><br>
+                <textarea 
+                    id="details" 
+                    name="details" 
+                    rows="5" 
+                    cols="50" 
+                    maxlength="500" 
+                    placeholder="Введіть текст..." 
+                    style="width: 100%; box-sizing: border-box;"></textarea>
+            </p>
+
+            <p>
+                <input type="checkbox" id="consent" name="consent" required>
+                <label for="consent"><b>Я даю згоду на обробку персональних даних</b></label>
+              
+            </p>
+
+            <p>
+                <button type="submit" style="background-color: #28a745; color: rgb(255, 255, 255); border: none; padding: 10px 15px; cursor: pointer; border-radius: 3px;">
+                    Надіслати інформацію
+                </button>
+                <button type="reset" style="padding: 10px 15px; border: none; cursor: pointer;border-radius: 3px;">
+                    Очистити
+                </button>
+            </p>
+
+        </form>
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>&copy; 2026 Ательє "Stitch". Усі права захищено.</p>
+    </footer>
+
+</body>
+
+</html>
