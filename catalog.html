@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Ательє "Stitch" - Каталог</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header style="display: flex; align-items: center; justify-content: space-between;">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="logo.jpg" alt="Логотип" width="70" height="70">
-            <h1 style="margin: 0;">Ательє "Stitch"</h1>
+<body class="catalog-page">
+    <header class="catalog-header">
+        <div class="logo-group">
+            <img src="logo.jpg" alt="Логотип" class="header-logo">
+            <h1>Ательє "Stitch"</h1>
         </div>
 
         <div>
@@ -20,15 +21,15 @@
 
     <hr>
 
-    <main>
+    <main class="catalog-main">
         <h2>Каталог послуг та сервісів</h2>
 
-        <article>
-            <div>
-                <img src="service1.jpg" alt="Заміна та ремонт блискавок" width="220">
+        <article class="product-card">
+            <div class="product-header">
+                <img src="service1.jpg" alt="Заміна та ремонт блискавок" class="product-img" tabindex="0">
                 <div>
                     <h3>1. Заміна та ремонт блискавок</h3>
-                    <p><b>Категорія:</b> Ремонт одягу</p>
+                    <p><b>Категорія:</b> <span class="fabric-type">Ремонт одягу</span></p>
                     <p><b>Базова ціна:</b> від 200 грн</p>
                 </div>
             </div>
@@ -42,14 +43,13 @@
                 <li><b>Додатково:</b> безкоштовний підбір бігунка під колір виробу.</li>
             </ol>
         </article>
-        <hr>
 
-        <article>
-            <div>
-                <img src="service2.jpg" alt="Укорочення та підгонка брюк" width="220">
+        <article class="product-card">
+            <div class="product-header">
+                <img src="service2.jpg" alt="Укорочення та підгонка брюк" class="product-img" tabindex="0">
                 <div>
                     <h3>2. Укорочення та підгонка брюк / спідниць</h3>
-                    <p><b>Категорія:</b> Ремонт та підгонка</p>
+                    <p><b>Категорія:</b> <span class="fabric-type">Ремонт та підгонка</span></p>
                     <p><b>Базова ціна:</b> від 150 грн</p>
                 </div>
             </div>
@@ -63,14 +63,13 @@
                 <li><b>Примірка:</b> безкоштовне зняття мірок майстром на місці.</li>
             </ol>
         </article>
-        <hr>
 
-        <article>
-            <div>
-                <img src="service3.jpg" alt="Штопання та реставрація джинсів" width="220">
+        <article class="product-card">
+            <div class="product-header">
+                <img src="service3.jpg" alt="Штопання та реставрація джинсів" class="product-img" tabindex="0">
                 <div>
                     <h3>3. Штопання та реставрація джинсів</h3>
-                    <p><b>Категорія:</b> Реставрація</p>
+                    <p><b>Категорія:</b> <span class="fabric-type">Реставрація</span></p>
                     <p><b>Базова ціна:</b> від 180 грн</p>
                 </div>
             </div>
@@ -84,14 +83,13 @@
                 <li><b>Міцність:</b> реставрована ділянка стає міцнішою за початкову тканину.</li>
             </ol>
         </article>
-        <hr>
 
-        <article>
-            <div>
-                <img src="service4.jpg" alt="Пошиття вечірніх суконь" width="220">
+        <article class="product-card">
+            <div class="product-header">
+                <img src="service4.jpg" alt="Пошиття вечірніх суконь" class="product-img" tabindex="0">
                 <div>
                     <h3>4. Індивідуальне пошиття вечірніх суконь</h3>
-                    <p><b>Категорія:</b> Індивідуальне пошиття</p>
+                    <p><b>Категорія:</b> <span class="fabric-type">Індивідуальне пошиття</span></p>
                     <p><b>Базова ціна:</b> від 1500 грн</p>
                 </div>
             </div>
@@ -105,14 +103,13 @@
                 <li><b>Консультація:</b> допомога дизайнера у виборі матеріалу та фурнітури.</li>
             </ol>
         </article>
-        <hr>
 
-        <article>
-            <div>
-                <img src="service5.jpg" alt="Пошиття чоловічих костюмів" width="220">
+        <article class="product-card">
+            <div class="product-header">
+                <img src="service5.jpg" alt="Пошиття чоловічих костюмів" class="product-img" tabindex="0">
                 <div>
                     <h3>5. Пошиття чоловічих костюмів</h3>
-                    <p><b>Категорія:</b> Індивідуальне пошиття</p>
+                    <p><b>Категорія:</b> <span class="fabric-type">Індивідуальне пошиття</span></p>
                     <p><b>Базова ціна:</b> від 3000 грн</p>
                 </div>
             </div>
@@ -120,20 +117,19 @@
             <h4>5 основних характеристик:</h4>
             <ol>
                 <li><b>Стиль:</b> класичні та сучасні чоловічі костюми (піджак, брюки, жилет).</li>
-                <li><b>Тканини:</b> натуральна вовна преміум-класу, льон, бавовна.</li>
+                <li><span class="fabric-type">Тип тканини для пошиття:</span>натуральна вовна преміум-класу, льон, бавовна. </li>
                 <li><b>Деталі:</b> ручна обробка петличок, внутрішніх кишень та коміра.</li>
                 <li><b>Термін виконання:</b> 10 робочих днів.</li>
                 <li><b>Комплектація:</b> фірмовий чохол для зберігання костюма у подарунок.</li>
             </ol>
         </article>
-        <hr>
 
-        <article>
-            <div>
-                <img src="service6.jpg" alt="Підгонка весільних суконь" width="220">
+        <article class="product-card">
+            <div class="product-header">
+                <img src="service6.jpg" alt="Підгонка весільних суконь" class="product-img" tabindex="0">
                 <div>
                     <h3>6. Підгонка весільних суконь за фігурою</h3>
-                    <p><b>Категорія:</b> Спеціалізована підгонка</p>
+                    <p><b>Категорія:</b> <span class="fabric-type">Спеціалізована підгонка</span></p>
                     <p><b>Базова ціна:</b> від 800 грн</p>
                 </div>
             </div>
@@ -154,6 +150,5 @@
     <footer>
         <p>&copy; 2026 Ательє "Stitch". Усі права захищено.</p>
     </footer>
-
 </body>
 </html>

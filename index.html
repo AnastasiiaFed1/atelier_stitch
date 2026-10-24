@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Ательє "Stitch" - Головна</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header style="display: flex; align-items: center; justify-content: space-between;">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="logo.jpg" alt="Логотип" width="70" height="70">
-            <h1 style="margin: 0;">Ательє "Stitch"</h1>
+    <header class="site-header">
+        <div class="logo-group">
+            <img src="logo.jpg" alt="Логотип" class="header-logo">
+            <h1>Ательє "Stitch"</h1>
         </div>
 
-        <div>
+        <div class="auth-buttons">
             <button type="button">Перейти у власний кабінет</button>
             <button type="button">Зареєструватись</button>
         </div>
@@ -31,99 +32,97 @@
 
     <main>
         <article>
-            <section id="about">
-                <h2>Наша мета</h2>
+            <section id="about" class="goal-section">
+                <h2 class="goal-title">Наша мета</h2>
                 <p>
                     Ми створюємо зручний та доступний сервіс для швидкого та якісного ремонту, підгонки і пошиття одягу для кожного клієнта.
                 </p>
                 <p>
-                    Ми <b>віримо</b>, що <i>індивідуальний</i> підхід — це <span>основа</span>, яка створює <em>справжню</em> <u>цінність</u> для кожного замовника.
+                    Ми <b>віримо</b>, що <em>індивідуальний</em> підхід — це <span class="highlight">основа</span>, яка створює <span class="emphasis">справжню</span> <span class="value-text">цінність</span> для кожного замовника.
                 </p>
 
                 <h3>Завдання для досягнення мети:</h3>
-                <ol type="I">
+                <ol class="tasks-list">
                     <li>Забезпечити найвищу якість реставрації та пошиття одягу.</li>
                     <li>Впровадити сучасні технології обробки тканин та фурнітури.</li>
                     <li>Скоротити терміни виконання замовлень до декількох годин.</li>
                 </ol>
             </section>
 
-            <br>
+            <section id="services-table" class="services-section">
+                <h3>Загальна інформація про типи сервісів</h3>
 
-            <section id="services-table">
-            <h3>Загальна інформація про типи сервісів</h3>
+                <table class="services-table">
+                    <caption>Прайс-лист та види сервісних послуг ательє</caption>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">№</th>
+                            <th rowspan="2">Тип сервісу</th>
+                            <th rowspan="2">Категорія</th>
+                            <th colspan="2">Умови виконання</th>
+                            <th rowspan="2">Гарантія</th> 
+                        </tr>
+                        <tr>
+                            <th>Термін</th>
+                            <th>Ціна (грн)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Заміна блискавки</td>    
+                            <td rowspan="3">Ремонт одягу</td>
+                            <td>1-2 дні</td>
+                            <td>200 грн</td>  
+                            <td>1 місяць</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Укорочення брюк / спідниць</td>
+                            <td>2-4 години</td>
+                            <td>150 грн</td>
+                            <td>14 днів</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Штопання та реставрація джинсів</td>
+                            <td>1 день</td>
+                            <td>180 грн</td>
+                            <td>14 днів</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Пошиття вечірньої сукні</td>
+                            <td rowspan="2">Індивідуальне пошиття</td>
+                            <td>5-7 днів</td>
+                            <td>1500 грн</td>
+                            <td>30 днів</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Пошиття чоловічого костюма</td>
+                            <td>10 днів</td>
+                            <td>3000 грн</td>
+                            <td>30 днів</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Підгонка весільних суконь</td>
+                            <td>Підгонка</td>
+                            <td>1 день</td>
+                            <td>від 800 грн</td>
+                            <td>14 днів</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6"><b>Всього доступно основних напрямків сервісу: 3 категорії</b></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+        </article>
 
-            <table border="1" cellpadding="6" cellspacing="0">
-                <caption>Прайс-лист та види сервісних послуг ательє</caption>
-                <thead>
-                    <tr>
-                        <th rowspan="2">№</th>
-                        <th rowspan="2">Тип сервісу</th>
-                        <th rowspan="2">Категорія</th>
-                        <th colspan="2">Умови виконання</th>
-                        <th rowspan="2">Гарантія</th> 
-                    </tr>
-                    <tr>
-                        <th>Термін</th>
-                        <th>Ціна (грн)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Заміна блискавки</td>    
-                        <td rowspan="3">Ремонт одягу</td>
-                        <td>1-2 дні</td>
-                        <td>200 грн</td>  
-                        <td>1 місяць</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Укорочення брюк / спідниць</td>
-                        <td>2-4 години</td>
-                        <td>150 грн</td>
-                        <td>14 днів</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Штопання та реставрація джинсів</td>
-                        <td>1 день</td>
-                        <td>180 грн</td>
-                        <td>14 днів</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Пошиття вечірньої сукні</td>
-                        <td rowspan="2">Індивідуальне пошиття</td>
-                        <td>5-7 днів</td>
-                        <td>1500 грн</td>
-                        <td>30 днів</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Пошиття чоловічого костюма</td>
-                        <td>10 днів</td>
-                        <td>3000 грн</td>
-                        <td>30 днів</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Підгонка весільних суконь</td>
-                        <td>Підгонка</td>
-                        <td>1 день</td>
-                        <td>від 800 грн</td>
-                        <td>14 днів</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="6"><b>Всього доступно основних напрямків сервісу: 3 категорії</b></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </section>
-
-    
         <aside>
             <h3>Корисні ресурси</h3>
             <p>Наші партнери (зовнішні посилання):</p>
@@ -143,18 +142,16 @@
             <h2>Відгуки про сервіси</h2>
             <p>Тут будуть розміщені відгуки клієнтів про наше ательє.</p>
         </section>
-
     </main>
 
     <hr>
 
-    <footer id="footer-contacts">
+    <footer id="footer-contacts" class="contacts-block">
         <address>
             <p><b>Адреса:</b> м. Київ, вул. Юлії Здановської, 55</p>
             <p><b>Телефони:</b> +38 (044) 123-45-67, +38 (095) 659-80-59</p>
         </address>
         <p>&copy; 2026 Ательє "Stitch". Усі права захищено.</p>
     </footer>
-
 </body>
 </html>
