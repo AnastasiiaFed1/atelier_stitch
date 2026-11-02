@@ -115,6 +115,12 @@ aside a {
     text-align: left;
 }
 
+.services-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
 .services-table th {
     background-color: #f2ebe4;
 }
@@ -172,13 +178,14 @@ aside a {
     height: 110px;
     object-fit: cover;
     border-radius: 6px;
-    transition: filter 0.5s ease;
+    transition: filter 0.5s ease, transform 0.5s ease, border-radius 0.5s ease;
 }
 
 .product-img:focus,
 .product-img:hover {
     filter: grayscale(100%);
-    outline: none;
+    transform: scale(1.05);
+    border-radius: 16px;
 }
 
 .fabric-type {
@@ -186,4 +193,82 @@ aside a {
     font-size: 1.15rem;
     font-style: italic;
     color: #5a3e2b;
+}
+
+.characteristics-list {
+    max-height: 150px;
+    overflow-y: auto;
+    padding-left: 20px;
+}
+
+/*feedback.html*/
+/* Відступ під абсолютну шапку*/
+.feedback-main {
+    margin-top: 100px;
+    padding: 20px 5%;
+}
+
+/*контейнери (форма та fieldset) */
+.feedback-form {
+    display: flex;
+    flex-flow: column nowrap;         /* flex-direction + flex-wrap */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-fieldset {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: space-around;
+    gap: 15px;
+    padding: 15px;
+    width: 100%;
+}
+
+/* елменти (гнучкі блоки та кнопки) */
+.form-row {
+    flex-grow: 1;           
+    flex-shrink: 1;   
+    flex-basis: 160px; 
+}
+
+.feedback-form > p:last-child {
+    display: flex;
+    gap: 10px;
+    align-self: flex-end;
+    order: 5; 
+}
+
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 6px;
+}
+
+button[class*="btn"] {
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-submit {
+    background-color: hsl(111, 60%, 35%);
+    color: #ffffff;
+}
+
+.btn-submit:hover {
+    background-color: #32702c;
+}
+
+.btn-reset {
+    background-color: #e0e0e0;
+    color: #333333;
+}
+
+.btn-reset:hover {
+    background-color: #cccccc;
 }

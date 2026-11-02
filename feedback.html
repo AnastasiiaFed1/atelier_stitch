@@ -21,24 +21,24 @@
 
     <hr>
 
-    <main>
+    <main class="feedback-main">
         <h2>Форма зворотнього зв’язку</h2>
 
         <form action="#" method="post" class="feedback-form">
             <fieldset class="form-fieldset">
                 <legend class="form-legend">Персональна інформація</legend>
                 
-                <p>
+                <p class="form-row">
                     <label for="fullname"><strong>Прізвище та ім’я:</strong></label><br>
                     <input type="text" id="fullname" name="fullname" placeholder="Іванов Іван" required class="form-input">
                 </p>
 
-                <p>
+                <p class="form-row">
                     <label for="email"><strong>E-mail:</strong></label><br>
                     <input type="email" id="email" name="email" placeholder="example@mail.com" required class="form-input">
                 </p>
 
-                <p>
+                <p class="form-row">
                     <label for="age"><strong>Вік:</strong></label><br>
                     <input type="number" id="age" name="age" min="14" max="100" class="form-input">
                 </p>
@@ -85,5 +85,6 @@
     <footer>
         <p>&copy; 2026 Ательє "Stitch". Усі права захищено.</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
