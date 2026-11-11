@@ -1,7 +1,4 @@
-// ч1
-// Тема: Робота з масивами, функціями та алгоритмами обробки даних
-
-// 1. Початковий масив із 10 записів про сервіси ательє
+// Частина 1.
 const services = [
     { id: 101, name: "Пошив сукні", type: "Пошив", readDay1: 150, readDay2: 220, duration: 5, price: 2500 },
     { id: 102, name: "Ремонт блискавки", type: "Ремонт", readDay1: 300, readDay2: 450, duration: 1, price: 300 },
@@ -15,22 +12,19 @@ const services = [
     { id: 110, name: "Хімчистка сукні", type: "Догляд", readDay1: 210, readDay2: 260, duration: 3, price: 1800 }
 ];
 
-/*
-  1.1 Впорядкування назв сервісів за терміном тривалості та знаходження середньої кількості користувачів для кожного терміну.
- */
+// 1.1 Впорядкування за тривалістю та середня відвідуваність
 function processServicesByDuration(servicesList) {
-    console.log("1.1 Впорядкування за терміном тривалості та середня відвідуваність");
+    console.log(" 1.1 Впорядкування за тривалістю та середня відвідуваність ");
     
-    // Перевірка типів даних через typeof (Стор. 2 методички)
-    console.log("[typeof] Перевірка типів: масив=" + typeof servicesList + ", об'єкт=" + typeof servicesList[0] + ", ціна=" + typeof servicesList[0].price);
+    
+    console.log("масив:", typeof servicesList, "| об'єкт:", typeof servicesList[0], "| назва:", typeof servicesList[0].name, "| ціна:", typeof servicesList[0].price, "| Перевірка ціни:", typeof (servicesList[0].price > 1000));
 
-    // Сортуємо копію масиву за зростанням тривалості (duration) за допомогою concat() та sort()
+    // concat(), sort(), forEach()
     const sorted = [].concat(servicesList).sort((a, b) => a.duration - b.duration);
     
     console.log("Впорядковані назви сервісів:");
     sorted.forEach(s => console.log(" - " + s.name + " (Тривалість: " + s.duration + " дн., Ціна: " + s.price + " грн)"));
 
-    // Групуємо сервіси за тривалістю
     const groups = {};
     sorted.forEach(s => {
         if (!groups[s.duration]) {
@@ -39,43 +33,44 @@ function processServicesByDuration(servicesList) {
         groups[s.duration].push(s);
     });
 
-    console.log("\nСередня кількість користувачів за однакової тривалості:");
+    console.log("\nСередня кількість користувачів за однаковою тривалістю:");
     for (const duration in groups) {
         const items = groups[duration];
         const totalDay1 = items.reduce((sum, item) => sum + item.readDay1, 0);
         const totalDay2 = items.reduce((sum, item) => sum + item.readDay2, 0);
         
+        // Явне перетворення типів
         const avgDay1 = (totalDay1 / items.length).toFixed(1);
         const avgDay2 = (totalDay2 / items.length).toFixed(1);
         
-        // Округлення за допомогою об'єкта Math.round() зі стор. 14 методички
+        // 3 методи Math
         const rawAvg = (parseFloat(avgDay1) + parseFloat(avgDay2)) / 2;
         const avgTotal = Math.round(rawAvg);
+        const maxDay = Math.max(parseFloat(avgDay1), parseFloat(avgDay2));
+        const minDay = Math.min(parseFloat(avgDay1), parseFloat(avgDay2));
 
-        console.log("Тривалість: " + duration + " дн. (Сервісів: " + items.length + ") -> Ср. Доба 1: " + avgDay1 + ", Ср. Доба 2: " + avgDay2 + ", Загальне округлене (Math.round): " + avgTotal);
+        console.log("Тривалість " + duration + " дн. -> Ср.1: " + avgDay1 + ", Ср.2: " + avgDay2 + ", Загальне округлене: " + avgTotal + " (Макс: " + maxDay + ", Мін: " + minDay + ")");
     }
 }
 
-/*
- 1.2 Знаходження сервісу з максимальною кількістю читачів за добу_2
- */
+// 1.2 Сервіс з максимальною відвідуваністю за добу_2
 function findMaxReadDay2(servicesList) {
-    console.log("\n 1.2 Сервіс з максимальною відвідуваністю за добу_2");
+    console.log("\n1.2 Сервіс з максимальною відвідуваністю за добу_2");
     
     const maxService = servicesList.reduce((max, current) => 
         current.readDay2 > max.readDay2 ? current : max
     , servicesList[0]);
 
-    console.log("Сервіс: " + maxService.name);
+    // 2 методи String
+    const formattedName = maxService.name.toLowerCase();
+    console.log("Сервіс: ".concat(formattedName));
     console.log("Читачів за добу_2: " + maxService.readDay2);
     console.log("Тип сервісу: " + maxService.type);
 }
 
-/*
- 1.3 Додавання нового запису (неповні дані -> в кінець, повні -> за зростанням ціни)
- */
+// 1.3 Додавання нового запису
 function addServiceRecord(servicesList, newRecord) {
-    console.log("\n 1.3 Додавання нового запису");
+    console.log("\n1.3 Додавання нового запису");
     
     const requiredKeys = ['id', 'name', 'type', 'readDay1', 'readDay2', 'duration', 'price'];
     const isComplete = requiredKeys.every(key => newRecord.hasOwnProperty(key) && newRecord[key] !== null && newRecord[key] !== undefined && newRecord[key] !== '');
@@ -83,11 +78,10 @@ function addServiceRecord(servicesList, newRecord) {
     const updatedList = [].concat(servicesList);
 
     if (!isComplete) {
-        console.log("Інформація неповна! Додаємо новий запис у КІНЕЦЬ списку.");
+        console.log("Інформація неповна! Додаємо запис у кінець списку.");
         updatedList.push(newRecord);
     } else {
-        console.log("Усі дані наявні! Шукаємо позицію в списку, відсортованому за зростанням вартості.");
-        
+        console.log("Усі дані наявні! Шукаємо позицію у відсортованому списку.");
         updatedList.sort((a, b) => a.price - b.price);
 
         let insertIndex = updatedList.length;
@@ -97,29 +91,39 @@ function addServiceRecord(servicesList, newRecord) {
                 break;
             }
         }
-        
         updatedList.splice(insertIndex, 0, newRecord);
     }
 
     return updatedList;
 }
 
-/*
- 1.4 Обчислення тривалості надання декількох сервісів одночасно за їх типом
- */
+// 1.4 Обчислення сумарної тривалості
 function calculateCombinedDuration(selectedServices) {
-    console.log("\n 1.4 Обчислення сумарної тривалості декількох сервісів");
+    console.log("\n1.4 Обчислення сумарної тривалості декількох сервісів");
     
     const count = selectedServices.length;
     let multiplier = 1;
 
-    // Конструкція if - else if - else за методичкою (Таблиця 16)
+    
     if (count === 1) {
         multiplier = 1;
     } else if (count > 1 && count <= 3) {
         multiplier = 1.1;
     } else if (count > 3) {
         multiplier = 2;
+    }
+
+    
+    const firstType = selectedServices[0] ? selectedServices[0].type : "";
+    switch (firstType) {
+        case "Пошив":
+            console.log("Категорія замовлення: Складне індивідуальне виготовлення");
+            break;
+        case "Ремонт":
+            console.log("Категорія замовлення: Швидка корекція виробу");
+            break;
+        default:
+            console.log("Категорія замовлення: Стандартне обслуговування");
     }
 
     console.log("Обрано сервісів: " + count + ". Множник тривалості: " + multiplier);
@@ -134,48 +138,54 @@ function calculateCombinedDuration(selectedServices) {
     console.log("Загальна підсумкова тривалість: " + totalDuration.toFixed(2) + " од.");
 }
 
-// Демонстрація роботи 1
+// Виклики частини 1
 processServicesByDuration(services);
 findMaxReadDay2(services);
 
 const incompleteService = { id: 111, name: "Терміновий замір", type: "Консультація" };
-let listAfterIncomplete = addServiceRecord(services, incompleteService);
+addServiceRecord(services, incompleteService);
 
 const completeService = { id: 112, name: "Пошив корсета", type: "Пошив", readDay1: 190, readDay2: 200, duration: 4, price: 2100 };
-let listAfterComplete = addServiceRecord(services, completeService);
+addServiceRecord(services, completeService);
 
 calculateCombinedDuration([services[0], services[3]]);
 
 
-// ч2
-// Тема: Об'єктно-орієнтоване програмування, класи та робота з датами
+// Частина 2. Об'єктно-орієнтоване програмування
 class UserAccount {
     constructor(lastName, firstName, age, email, feedbackGoal, dateStr, timeStr) {
         this.lastName = lastName;
-        this.firstName = firstName;
+        this.firstName = firstName; 
         this.age = age;
         this.email = email;
         this.feedbackGoal = feedbackGoal;
         
-        // Методи String: split('.') та явне перетворення Number
-        const [day, month, year] = dateStr.split('.').map(Number);
+        // Явне перетворення типів
+        //const [day, month, year] = dateStr.split('.').map(Number);
+        const dateParts = dateStr.split('.');
+        const day= Number(dateParts[0]); 
+        const month= Number(dateParts[1]);
+        const year= Number(dateParts[2]);
         const [hours, minutes] = timeStr.split(':').map(Number);
         
-        // Створення об'єкта Date за 4-м способом з методички (Стор. 12)
+
         this.requestDate = new Date(year, month - 1, day, hours, minutes);
     }
 
-    // Методи об'єкта Date з методички (Стор. 13)
+    // 3 методи об'єкта Date
     getFormattedDate() {
-        return this.requestDate.toLocaleDateString('uk-UA');
+        return this.requestDate.toDateString();
     }
 
     getFormattedTime() {
-        return this.requestDate.toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' });
+        return this.requestDate.toTimeString().substring(0, 5);
+    }
+
+    getRequestYear() {
+        return this.requestDate.getFullYear();
     }
 }
 
-// Створення 10 облікових записів
 const users = [
     new UserAccount("Коваленко", "Олена", 22, "olena.kov@gmail.com", "побажання", "12.05.2026", "14:30"),
     new UserAccount("Шевченко", "Тарас", 65, "t.shevchenko@ukr.net", "претензія", "15.05.2026", "10:15"),
@@ -194,14 +204,12 @@ class UserAnalyticsManager {
         this.users = userList;
     }
 
-    /*
-      2.1 Виведення переліку користувачів, які звернулись протягом певного місяця та в заданий момент часу
-     */
+    // 2.1 Фільтрація користувачів 
     filterByMonthAndTime(targetMonth, targetTimeStr) {
-        console.log(" 2.1 Користувачі, що звернулися у місяць №" + targetMonth + " о " + targetTimeStr);
+        console.log("\n2.1 Користувачі, що звернулися у місяць №" + targetMonth + " о " + targetTimeStr);
         
         const filtered = this.users.filter(u => {
-            const userMonth = u.requestDate.getMonth() + 1; // Метод getMonth() (Стор. 13)
+            const userMonth = u.requestDate.getMonth() + 1; // getMonth()
             const userTime = u.getFormattedTime();
             return userMonth === targetMonth && userTime === targetTimeStr;
         });
@@ -210,16 +218,14 @@ class UserAnalyticsManager {
             console.log("Користувачів із такими параметрами не знайдено.");
         } else {
             filtered.forEach(u => {
-                // Метод String.includes() зі стор. 15 методички
+                // Метод String.includes()
                 const isUkrNet = u.email.includes("ukr.net") ? " (Ukr.net)" : "";
                 console.log(" - " + u.lastName + " " + u.firstName + " | E-mail: " + u.email + isUkrNet + " | Мета: " + u.feedbackGoal);
             });
         }
     }
 
-    /*
-      2.2 Виведення мінімального віку користувача, його E-mail та дати звернення
-     */
+    // 2.2 Пошук наймолодшого
     getYoungestUserInfo() {
         console.log("\n2.2 Користувач з мінімальним віком");
         
@@ -230,12 +236,10 @@ class UserAnalyticsManager {
         console.log("Наймолодший користувач: " + youngest.lastName + " " + youngest.firstName);
         console.log("Мінімальний вік: " + youngest.age + " років");
         console.log("E-mail: " + youngest.email);
-        console.log("Дата звернення: " + youngest.getFormattedDate());
+        console.log("Дата звернення: " + youngest.getFormattedDate() + " (Рік: " + youngest.getRequestYear() + ")");
     }
 
-    /*
-      2.3 Поділ користувачів на класи за віком та метою звернення
-     */
+    // 2.3 Класифікація за категоріями
     classifyUsers() {
         console.log("\n2.3 Класифікація користувачів за категоріями");
         
@@ -247,8 +251,8 @@ class UserAnalyticsManager {
         };
 
         this.users.forEach(u => {
-            // Метод toLowerCase() об'єкта String (Стор. 15)
-            const goal = u.feedbackGoal.toLowerCase();
+          
+            const goal = u.feedbackGoal.toUpperCase();
 
             if (u.age < 25 && goal === "побажання") {
                 classes["активна молодь"].push(u);
@@ -269,12 +273,14 @@ class UserAnalyticsManager {
         }
     }
 
-    /*
-      2.4 Сортування користувачів в алфавітному порядку адреси E-mail із виведенням мети
-     */
+    // 2.4 Сортування за алфавітом E-mail
     sortByEmailWithGoal() {
         console.log("\n2.4 Сортування за алфавітом E-mail");
         
+        // Метод масивів join()
+        const emailsList = this.users.map(u => u.email).join(", ");
+        console.log("Перелік e-mail через кому: " + emailsList.substring(0, 50) + "...");
+
         const sorted = [].concat(this.users).sort((a, b) => {
             if (a.email < b.email) return -1;
             if (a.email > b.email) return 1;
@@ -287,10 +293,10 @@ class UserAnalyticsManager {
     }
 }
 
-// Демонстрація роботи 2
+// Виклики частини 2
 const analytics = new UserAnalyticsManager(users);
-
-analytics.filterByMonthAndTime(5, "14:30"); // Травень (місяць 5), час 14:30
+analytics.filterByMonthAndTime(5, "14:30");
 analytics.getYoungestUserInfo();
 analytics.classifyUsers();
 analytics.sortByEmailWithGoal();
+
